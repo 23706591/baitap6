@@ -1,0 +1,54 @@
+package tuan8.TH;
+
+public abstract class HangHoa {
+	
+	public String maHangHoa, tenHangHoa;
+	public float donGia;
+	public int soLuongTon;
+	public String getMaHangHoa() {
+		return maHangHoa;
+	}
+	public void setMaHangHoa(String maHangHoa) {
+		this.maHangHoa = maHangHoa;
+	}
+	public String getTenHangHoa() {
+		return tenHangHoa;
+	}
+	public void setTenHangHoa(String tenHangHoa) {
+		if(tenHangHoa.trim().length() == 0)throw new IllegalArgumentException("Ten hang hoa khong duoc rong");
+		this.tenHangHoa = tenHangHoa;
+	}
+	public float getDonGia() {
+		return donGia;
+	}
+	public void setDonGia(double donGia) {
+		if(donGia < 0) throw new IllegalCallerException("Don gia phai lon hon bang 0");
+		this.donGia = (float) donGia;
+	}
+	public int getSoLuongTon() {
+		return soLuongTon;
+	}
+	public void setSoLuongTon(int soLuongTon) {
+		if(soLuongTon < 0) throw new IllegalCallerException("So luong ton phai lon hon bang 0");
+		this.soLuongTon = soLuongTon;
+	}
+	public HangHoa(String maHangHoa, String tenHangHoa, double d, int soLuongTon) {
+		super();
+		this.maHangHoa = maHangHoa;
+		setTenHangHoa(tenHangHoa);
+		setDonGia(donGia);
+		setSoLuongTon(soLuongTon);
+	}
+	public HangHoa() {
+		this("XXX", "XXX", 0, 0);
+	}
+	public abstract double getTienVAT();
+	public abstract String mucDoBanBuon();
+	@Override
+	public String toString() {
+		return String.format("|%-10s|%-10s|%-10s|%-10s|", maHangHoa, tenHangHoa, soLuongTon, donGia);
+	}
+	
+	
+	
+}
