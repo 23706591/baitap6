@@ -1,0 +1,44 @@
+package tuan8.TH;
+
+import java.time.LocalDate;
+
+public class HangSanhSu {
+	public String nhaSanXuat;
+	public LocalDate ngayNhapKho;
+	public String getNhaSanXuat() {
+		return nhaSanXuat;
+	}
+	public void setNhaSanXuat(String nhaSanXuat) {
+		this.nhaSanXuat = nhaSanXuat;
+	}
+	public LocalDate getNgayNhapKho() {
+		return ngayNhapKho;
+	}
+	public void setNgayNhapKho(LocalDate ngayNhapKho) {
+		if(ngayNhapKho.isAfter(LocalDate.now())) throw new IllegalAccessError("Ngay nhap kho phai truoc ngay hien tai");
+		this.ngayNhapKho = ngayNhapKho;
+	}
+	public HangSanhSu(String nhaSanXuat, LocalDate ngayNhapKho) {
+		super();
+		this.nhaSanXuat = nhaSanXuat;
+		setNgayNhapKho(ngayNhapKho);
+	}
+	public HangSanhSu(String maHangHoa, String tenHangHoa, float donGia, int soLuongTon, String nhaSanXuat, LocalDate ngayNhapKho) {
+		super();
+		this.nhaSanXuat = nhaSanXuat;
+		setNgayNhapKho(ngayNhapKho);
+	}
+	@Override
+	public double getTienVAT() {
+		return soLuongTon*donGia*1.1;
+	}
+	@Override
+	public String mucDoBanBuon() {
+		if(soLuongTon > 50 && ngayNhapKho.compareTo(LocalDate.now()) > 10)
+			return "ban cham";
+		return null;
+	}
+	
+	
+	
+}
